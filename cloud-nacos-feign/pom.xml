@@ -17,6 +17,7 @@
         <module>cloud-api-base</module>
         <module>cloud-provider-base</module>
         <module>cloud-auth-manager</module>
+        <module>cloud-gateway-base</module>
     </modules>
 
     <properties>

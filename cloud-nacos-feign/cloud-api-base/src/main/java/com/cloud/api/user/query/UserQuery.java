@@ -1,4 +1,4 @@
-package com.cloud.api.user.req;
+package com.cloud.api.user.query;
 
 import lombok.*;
 

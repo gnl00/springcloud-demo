@@ -1,7 +1,7 @@
 package com.cloud.user.service.impl;
 
-import com.cloud.api.user.domain.dto.UserDto;
-import com.cloud.api.user.domain.req.UserQuery;
+import com.cloud.api.user.dto.UserDto;
+import com.cloud.api.user.query.UserQuery;
 import com.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,15 +34,15 @@ public class UserServiceImpl implements UserService {
 
         double flag = 0.5;
 
-        double random = Math.random();
+        if (Math.random() > flag) {
 
-        if (random > flag) {
             log.info("===> save user success");
+
             return 1;
-        } else {
-            log.info("===> save user fail");
-            return -1;
         }
+
+        log.info("===> save user fail");
+        return -1;
     }
 
     @Override

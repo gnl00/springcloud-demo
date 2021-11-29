@@ -1,7 +1,7 @@
 package com.cloud.user.controller;
 
-import com.cloud.api.common.ResResult;
-import com.cloud.api.user.domain.req.UserQuery;
+import com.cloud.api.common.resp.ResResult;
+import com.cloud.api.user.query.UserQuery;
 import com.cloud.user.client.UserClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

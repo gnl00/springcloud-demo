@@ -1,7 +1,7 @@
 package com.cloud.user.service;
 
-import com.cloud.api.user.domain.dto.UserDto;
-import com.cloud.api.user.domain.req.UserQuery;
+import com.cloud.api.user.dto.UserDto;
+import com.cloud.api.user.query.UserQuery;
 
 import java.util.List;
 

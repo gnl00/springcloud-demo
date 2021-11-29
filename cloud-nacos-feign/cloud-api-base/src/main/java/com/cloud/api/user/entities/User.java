@@ -1,4 +1,4 @@
-package com.cloud.api.user.domain.entities;
+package com.cloud.api.user.entities;
 
 import lombok.*;
 

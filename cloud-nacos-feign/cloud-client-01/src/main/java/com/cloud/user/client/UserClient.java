@@ -1,7 +1,7 @@
 package com.cloud.user.client;
 
-import com.cloud.api.common.ResResult;
-import com.cloud.api.user.domain.req.UserQuery;
+import com.cloud.api.common.resp.ResResult;
+import com.cloud.api.user.query.UserQuery;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date 2021-11-29 15:03
  */
 
-@FeignClient("cloud-provider")
+@FeignClient(value = "cloud-provider") // 大小写要和注册在 nacos 上的服务名一致
 @RequestMapping("/pro/api/user")
 @ResponseBody
 public interface UserClient {
