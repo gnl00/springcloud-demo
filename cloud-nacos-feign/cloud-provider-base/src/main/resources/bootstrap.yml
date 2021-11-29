@@ -1,0 +1,18 @@
+server:
+  port: 9900
+spring:
+  application:
+    name: cloud-provider
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 9acb2305-4302-4ad8-b986-e1d1584fbd63
+        group: DEV_GROUP
+      discovery:
+        server-addr: localhost:8848
+        namespace: 9acb2305-4302-4ad8-b986-e1d1584fbd63
+        group: DEV_GROUP
