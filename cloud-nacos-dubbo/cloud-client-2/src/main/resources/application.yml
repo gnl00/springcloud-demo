@@ -1,0 +1,13 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: cloud-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+server-url:
+  cloud-provider: http://cloud-provider # 注册在nacos上的服务提供者的url

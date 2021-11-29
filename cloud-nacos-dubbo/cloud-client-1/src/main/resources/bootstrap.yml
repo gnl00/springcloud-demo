@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+# 先创建 or 找到合适的命名空间，再在对应的命名空间中创建配置文件
+spring:
+  application:
+    name: cloud-client
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848 # nacos 作为注册中心的地址
+        file-extension: yaml # 指定配置文件的为 yaml 格式
+        namespace: c148bed6-dd5a-4ce3-850a-0d7885128d23 # 指定命名空间，注意指定的是命名空间的唯一Id，而不是命名空间的名称
+        group: DEV_GROUP # 指定分组
+      discovery:
+        server-addr: localhost:8848 # nacos 作为配置中心的地址
+
+# 在 nacos 上拉取的对应的配置文件名 ${spring.application.name}-${spring.profiles.active}-${spring.cloud.nacos.config.file-extension}
