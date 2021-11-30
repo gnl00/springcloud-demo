@@ -1,7 +1,7 @@
 package com.cloud.user.client;
 
-import com.cloud.api.common.resp.ResResult;
-import com.cloud.api.user.query.UserQuery;
+import com.cloud.common.resp.ResResult;
+import com.cloud.user.query.UserQuery;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

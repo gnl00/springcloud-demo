@@ -1,12 +1,9 @@
 package com.cloud.user.service.impl;
 
-import com.cloud.api.user.query.UserQuery;
-import com.cloud.user.mapper.UserMapper;
+import com.cloud.user.query.UserQuery;
 import com.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * UserServiceImpl

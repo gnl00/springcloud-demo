@@ -1,4 +1,4 @@
-package com.cloud.api.common.enumm;
+package com.cloud.common.enumm;
 
 /**
  * TODO

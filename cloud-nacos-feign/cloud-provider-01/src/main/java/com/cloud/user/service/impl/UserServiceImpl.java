@@ -1,7 +1,7 @@
 package com.cloud.user.service.impl;
 
-import com.cloud.api.user.dto.UserDto;
-import com.cloud.api.user.query.UserQuery;
+import com.cloud.user.dto.UserDto;
+import com.cloud.user.query.UserQuery;
 import com.cloud.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

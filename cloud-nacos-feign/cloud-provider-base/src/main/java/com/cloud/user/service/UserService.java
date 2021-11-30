@@ -1,6 +1,6 @@
 package com.cloud.user.service;
 
-import com.cloud.api.user.query.UserQuery;
+import com.cloud.user.query.UserQuery;
 
 /**
  * UserService

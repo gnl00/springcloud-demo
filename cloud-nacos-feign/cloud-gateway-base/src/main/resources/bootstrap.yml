@@ -17,3 +17,13 @@ spring:
         server-addr: localhost:8848
         namespace: 9acb2305-4302-4ad8-b986-e1d1584fbd63
         group: DEV_GROUP
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
+#      routes:
+#        - id: path_user_save
+#          uri: lb://cloud-client
+#          predicates: # 路由断言匹配
+#            - Path=/cli/user/save # 访问localhost:9527/cli/user/save 即 访问cloud-client/cli/user/save
+#

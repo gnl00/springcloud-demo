@@ -1,4 +1,4 @@
-package com.cloud.api.user.resp;
+package com.cloud.user.resp;
 
 import lombok.*;
 

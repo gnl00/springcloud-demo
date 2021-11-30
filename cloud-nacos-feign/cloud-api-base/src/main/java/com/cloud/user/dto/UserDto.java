@@ -1,4 +1,4 @@
-package com.cloud.api.user.dto;
+package com.cloud.user.dto;
 
 import lombok.*;
 

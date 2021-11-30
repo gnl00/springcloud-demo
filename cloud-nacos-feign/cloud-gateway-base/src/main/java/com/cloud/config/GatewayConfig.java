@@ -19,12 +19,10 @@ public class GatewayConfig {
 
     @Bean
     public RouteLocator routeLocator(RouteLocatorBuilder builder) {
-
-        log.info("hhh_test im here~");
-
+        // 进行路由映射
         return builder
                 .routes()
-                .route("id-route-1", r -> r.path("/baidu").uri("https://www.baidu.com"))
+                .route("path_route_guonei", r -> r.path("/guonei").uri("http://news.baidu.com/guonei"))
                 .build();
     }
 
