@@ -11,3 +11,18 @@ spring:
 
 server-url:
   cloud-provider: http://cloud-provider # 注册在nacos上的服务提供者的url
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://localhost:8848
+  cloud:
+    subscribed-services: cloud-provider
+  scan:
+    base-packages: com.boot.cloud
+
+dubbo-ver:
+  service:
+    user: 1.0.0

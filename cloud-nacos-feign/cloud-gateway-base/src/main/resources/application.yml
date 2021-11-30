@@ -1,0 +1,27 @@
+server:
+  port: 9901
+spring:
+  application:
+    name: cloud-provider
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 9acb2305-4302-4ad8-b986-e1d1584fbd63
+        group: DEV_GROUP
+      discovery:
+        server-addr: localhost:8848
+        namespace: 9acb2305-4302-4ad8-b986-e1d1584fbd63
+        group: DEV_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 开启从注册中心动态创建路由的功能，利用微服务名进行路由
+      routes:
+        - id: path_user_save
+          uri: lb://cloud-client
+          predicates:
+            - Path=/cli/user/save # 进行路径匹配的断言，即访问网关的路径

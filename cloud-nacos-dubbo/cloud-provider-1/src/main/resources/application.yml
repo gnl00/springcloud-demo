@@ -9,6 +9,19 @@ spring:
       discovery:
         server-addr: localhost:8848
 
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: com.boot.cloud.service
+  registry:
+    address: nacos://localhost:8848
+
+dubbo-ver:
+  service:
+    user: 1.0.0
+
 management:
   endpoints:
     web:
