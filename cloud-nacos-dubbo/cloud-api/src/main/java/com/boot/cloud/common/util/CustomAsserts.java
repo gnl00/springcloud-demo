@@ -1,6 +1,5 @@
 package com.boot.cloud.common.util;
 
-
 import com.boot.cloud.common.exception.CustomAssertException;
 
 /**
