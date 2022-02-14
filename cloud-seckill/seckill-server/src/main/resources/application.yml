@@ -1,11 +1,11 @@
 # idea vm option 中加入 -Dserver.port=8862 启动多个服务
 server:
   port: 8861
-  undertow:
-    buffer-size: 1024
-    io-threads: 6
-    worker-threads: 40
-    direct-buffers: true
+#  undertow:
+#    buffer-size: 1024
+#    io-threads: 6
+#    worker-threads: 40
+#    direct-buffers: true
 
 # buffer-size
 # 配置会影响 buffer，这些 buffer 会用于服务器连接的 IO 操作,有点类似 netty 的池化内存管理
@@ -24,11 +24,22 @@ spring:
   redis:
     lettuce:
       pool:
-        max-active: 10
+        max-active: 20
         max-idle: 10
         min-idle: 5
+        max-wait: 10000
     port: 6379
     host: localhost
+    timeout: 60s
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        namespace: ea9f263d-7146-4196-bb5b-6e25ba813517
+        group: gp-dev
+  application:
+    name: seckill-server
 
 
 seckill:

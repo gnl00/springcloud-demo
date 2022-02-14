@@ -26,6 +26,9 @@ public class SecKillController {
     @Value("${seckill.goods.stock-key}")
     private String stockKey;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @Autowired
     private RedissonClient redissonClient;
 
@@ -74,7 +77,7 @@ public class SecKillController {
             log.info("{} 商品库存不足", ThreadName);
         }
 
-        return "操作成功";
+        return "操作成功 " + serverPort;
     }
 
 }
