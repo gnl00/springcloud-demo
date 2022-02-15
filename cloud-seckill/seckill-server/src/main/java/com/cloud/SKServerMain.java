@@ -38,8 +38,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * <p> 测试用例：jmeter 1000 user 0 Ramp-up Period 3 loop
  * <p> 错误日志：Exception occured. Channel
  * <p> 原因：当前版本（3.11.2） Redission 内存溢出
- * <p> 解决：1、升级 Redisson 版本至3.16.x；2、配置文件中 redis 延长 max-wait 和 timeout
+ * <p> 解决：1、升级 Redisson 版本至 3.16.x；2、配置文件中 redis 延长 max-wait 和 timeout
  * <p> 分析：可能是瞬时并发进来的时候的，最开始的请求没有拿到锁，一直在等待，等到超时
+ *
+ * <p> 优化思路
+ * 1、秒杀服务集群
+ * 2、Redis 集群
  *
  * @author lgn
  * @since 2022/2/12 15:21

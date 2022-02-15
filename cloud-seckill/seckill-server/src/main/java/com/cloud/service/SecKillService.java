@@ -11,4 +11,15 @@ import org.redisson.api.RAtomicLong;
 
 public interface SecKillService {
 
+    /**
+     * 获取商品库存
+     * @return Long
+     */
+    Long getStock();
+
+    /**
+     * 执行秒杀请求
+     * @return String
+     */
+    String doSecKill();
 }
