@@ -36,13 +36,23 @@ spring:
       discovery:
         enabled: true
         server-addr: localhost:8848
-        namespace: ea9f263d-7146-4196-bb5b-6e25ba813517
+        # namespace: ea9f263d-7146-4196-bb5b-6e25ba813517
         group: gp-dev
   application:
     name: seckill-server
 
+#feign:
+#  httpclient:
+#    connection-timeout: 5000
+#
+#ribbon:
+#  ReadTimeout: 5000
+#  ConnectTimeout: 5000
 
 seckill:
   goods:
-    stock-key: sk:goods:stock
+    # 商品库存 key
+    stock-key: "sk:goods:stock:"
+    # 预热商品 key
+    info-key: "sk:goods:info:"
 

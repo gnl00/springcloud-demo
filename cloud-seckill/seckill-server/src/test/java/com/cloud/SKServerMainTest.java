@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.redisson.api.RAtomicLong;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -22,6 +23,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class SKServerMainTest {
 
+    // sk:goods:stock:
+    @Value("${seckill.goods.stock-key}")
+    private String goodsStockKey;
+
     @Autowired
     private RedissonClient redissonClient;
 
@@ -35,12 +40,14 @@ public class SKServerMainTest {
 
     @Test
     public void setGoodsStock() {
-        redisTemplate.opsForValue().set("sk:goods:stock", 100);
+        Long goodsId = 1L;
+        redisTemplate.opsForValue().set(goodsStockKey + goodsId, 100);
     }
 
     @Test
     public void getGoodsStock() {
-        RAtomicLong atomicLong = redissonClient.getAtomicLong("sk:goods:stock");
+        Long goodsId = 1L;
+        RAtomicLong atomicLong = redissonClient.getAtomicLong(goodsStockKey + goodsId);
         System.out.println(atomicLong.getAndDecrement());
     }
 

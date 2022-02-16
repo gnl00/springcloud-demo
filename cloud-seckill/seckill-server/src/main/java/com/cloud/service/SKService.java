@@ -1,7 +1,5 @@
 package com.cloud.service;
 
-import org.redisson.api.RAtomicLong;
-
 /**
  * SecKillService
  *
@@ -9,17 +7,19 @@ import org.redisson.api.RAtomicLong;
  * @since 2022/2/12 15:48
  */
 
-public interface SecKillService {
+public interface SKService {
 
     /**
      * 获取商品库存
+     * @param goodsId 商品Id
      * @return Long
      */
-    Long getStock();
+    Long getStock(Long goodsId);
 
     /**
      * 执行秒杀请求
-     * @return String
+     * @param goodsId 商品Id
+     * @return Boolean
      */
-    String doSecKill();
+    Boolean doSecKill(Long goodsId);
 }

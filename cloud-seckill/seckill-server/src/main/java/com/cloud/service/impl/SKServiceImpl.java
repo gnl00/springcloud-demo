@@ -1,6 +1,6 @@
 package com.cloud.service.impl;
 
-import com.cloud.service.SecKillService;
+import com.cloud.service.SKService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RAtomicLong;
 import org.redisson.api.RLock;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class SecKillServiceImpl implements SecKillService {
+public class SKServiceImpl implements SKService {
 
     @Value("${seckill.goods.stock-key}")
     private String stockKey;
@@ -28,44 +28,45 @@ public class SecKillServiceImpl implements SecKillService {
 
     /**
      * 从 redis 缓存获取 RAtomicLong 类型商品库存
+     * @param goodsId 商品 Id
      */
-    public RAtomicLong getStockR() {
-        return redissonClient.getAtomicLong(stockKey);
+    public RAtomicLong getStockR(Long goodsId) {
+        return redissonClient.getAtomicLong(stockKey + goodsId);
     }
 
     @Override
-    public Long getStock() {
-        long stock = getStockR().get();
+    public Long getStock(Long goodsId) {
+        long stock = getStockR(goodsId).get();
         return stock;
     }
 
     @Override
-    public String doSecKill() {
-        RLock lock = redissonClient.getLock("sk_lock");
+    public Boolean doSecKill(Long goodsId) {
+        RLock lock = redissonClient.getLock("rds_sk_lock_" + goodsId);
 
         String ThreadName = Thread.currentThread().getName();
 
-        if (getStock() > 0) {
+        if (getStock(goodsId) > 0) {
             // redisson 加锁
             lock.lock();
             try {
-                Long stock = getStock();
-                if (stock > 0) {
-                    RAtomicLong stockR = getStockR();
+                if (getStock(goodsId) > 0) {
+                    RAtomicLong stockR = getStockR(goodsId);
                     log.info("{} 获得商品: {}", ThreadName, stockR.getAndDecrement());
+                    return true;
                 } else {
                     log.info("{} 商品库存不足", ThreadName);
+                    return false;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 lock.unlock();
             }
-
         } else {
             log.info("{} 商品库存不足", ThreadName);
+            return false;
         }
-
-        return "操作成功 ";
+        return false;
     }
 }
