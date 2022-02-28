@@ -20,7 +20,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * <p> 1、Redis key 的设计。同一个时间可能有多款商品参与秒杀活动，所以需要加上商品Id来区分
  *     商品预热信息 sk:goods:info:{goodsId}
  *     商品库存信息 sk:goods:stock:{goodsId}
- * <p> 2、秒杀地址隐藏
+ * <p> 2、前端进行秒杀地址隐藏，可以将秒杀 URL 动态化，可以在 URL 后面拼接随机 UUID，保存到专门的缓存中，
+ *        每次请求来到服务器的时候和缓存表中进行匹配，如果某一条链接被使用过就设置为 false
+ *        参考 https://www.cnblogs.com/myseries/p/11891132.html
  * <p>
  * <p> 服务
  * <p> 1、seckill-server 作为秒杀服务的提供者。负责秒杀数据预热，处理秒杀请求（秒杀请求分发到 MQ 处理）

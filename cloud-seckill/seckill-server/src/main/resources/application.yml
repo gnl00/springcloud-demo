@@ -21,6 +21,8 @@ server:
 # 是否分配的直接内存(NIO直接分配的堆外内存)
 
 spring:
+  application:
+    name: seckill-server
   redis:
     lettuce:
       pool:
@@ -38,13 +40,14 @@ spring:
         server-addr: localhost:8848
         # namespace: ea9f263d-7146-4196-bb5b-6e25ba813517
         group: gp-dev
-  application:
-    name: seckill-server
 
-#feign:
-#  httpclient:
-#    connection-timeout: 5000
-#
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    send-message-timeout: 10000
+    group: gp_seckill
+
+
 #ribbon:
 #  ReadTimeout: 5000
 #  ConnectTimeout: 5000

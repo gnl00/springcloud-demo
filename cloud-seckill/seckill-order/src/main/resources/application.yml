@@ -1,0 +1,35 @@
+server:
+  port: 8862
+
+spring:
+  application:
+    name: seckill-order
+  redis:
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 10
+        min-idle: 5
+        max-wait: 10000
+    port: 6379
+    host: localhost
+    timeout: 60s
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+        # namespace: ea9f263d-7146-4196-bb5b-6e25ba813517
+        group: gp-dev
+
+rocketmq:
+  name-server: localhost:9876
+  consumer:
+    group: gp_seckill
+
+seckill:
+  goods:
+    # 商品库存 key
+    stock-key: "sk:goods:stock:"
+    # 预热商品 key
+    info-key: "sk:goods:info:"
